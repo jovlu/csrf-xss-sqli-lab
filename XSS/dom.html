@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM-based XSS (Korisnici)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>DOM-based XSS — korisnička strana</h1>
+
+<div class="card">
+    <h3>Korisnički profil</h3>
+    <p id="secret">Ime: Ana Jovanović — Email: ana@test.com — Tajni token: 207d9180-0d2c</p>
+</div>
+
+<div class="card">
+    <h3>Napomena operatera</h3>
+    <div id="render" class="note"></div>
+</div>
+
+<script>
+    const hash = decodeURIComponent(window.location.hash.slice(1));
+    const defaultMessage = '';
+
+    // Umesto .innerHTML, trebalo bi koristiti .textContent da bi se sprečio DOM-based XSS.
+    document.getElementById('render').innerHTML = hash || defaultMessage;
+</script>
+</body>
+</html>
